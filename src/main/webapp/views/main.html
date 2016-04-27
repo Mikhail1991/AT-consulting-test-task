@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../libs/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="../libs/jquery.idTabs.min.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/modal.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+
+    <title>Библиотека</title>
+</head>
+<body>
+<ul class="idTabs">
+    <li><a href="#books" onclick="loadBooks()">Книги</a></li>
+    <li><a href="#users" onclick="loadUsers()">Пользователи</a></li>
+</ul>
+
+<div id="books">
+    <p>Подгружаем таблицу раз (книги)</p>
+    <button onclick="addBook()"><a href="#dialogBook" name="modal">Добавить книгу</a></button>
+    <div id="booksTable">
+
+    </div>
+    <button>Показать ещё</button>
+</div>
+<div id="users">
+    <p>Подгружаем таблицу два (пользователи)</p>
+    <button onclick="addUser()"><a href="#dialog" name="modal">Добавить пользователя</a></button>
+    <div id="usersTable">
+
+    </div>
+    <button>Показать ещё</button>
+</div>
+
+<div id="boxes">
+    <div id="dialog" class="window">
+        Добавление пользователя
+        <a href="#"class="close"/>Закрыть его</a>
+
+        <div>
+            <p>Введите имя</p>
+            <input id="login" type="text" size="40">
+            <br>
+            <p>Введите пароль</p>
+            <input id="password" type="text" size="40">
+        </div>
+        <br>
+        <button onclick="confirm()">Подтвердить</button>
+    </div>
+
+    <div id="dialogBook" class="window">
+        Добавление пользователя
+        <a href="#"class="close"/>Закрыть его</a>
+
+        <div>
+            <p>Введите ISN</p>
+            <input id="isn" type="text" size="40">
+            <br>
+            <p>Введите автора</p>
+            <input id="author" type="text" size="40">
+            <br>
+            <p>Введите название</p>
+            <input id="title" type="text" size="40">
+            <br>
+        </div>
+        <br>
+        <button onclick="confirmBook()">Подтвердить</button>
+    </div>
+
+    <div id="mask"></div>
+</div>
+
+</body>
+</html>
