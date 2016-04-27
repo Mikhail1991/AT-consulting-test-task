@@ -34,6 +34,7 @@ public class UserController {
 
         for (User u : users) {
             JSONObject entity = new JSONObject();
+            entity.put("id",u.getId());
             entity.put("name", u.getName());
             entity.put("surname", u.getSurname());
             entities.add(entity);
@@ -53,4 +54,10 @@ public class UserController {
         }
         return null;
     }
+    @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
+    public ResponseEntity deleteUser(@RequestParam(value = "id") String id){
+        userDao.deleteUser(Integer.parseInt(id));
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 }

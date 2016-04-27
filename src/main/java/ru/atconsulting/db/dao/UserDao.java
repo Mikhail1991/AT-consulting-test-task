@@ -16,4 +16,6 @@ public interface UserDao {
     public List<User> getAllUsers();
 
     public void addUser(String login, String password);
+
+    public void deleteUser(Integer id);
 }

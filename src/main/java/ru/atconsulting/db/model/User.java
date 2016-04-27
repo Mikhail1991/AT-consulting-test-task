@@ -1,8 +1,6 @@
 package ru.atconsulting.db.model;
 
-/**
- * Created by Mike on 27.04.2016.
- */
+
 public class User {
     private Integer id;
     private String name;

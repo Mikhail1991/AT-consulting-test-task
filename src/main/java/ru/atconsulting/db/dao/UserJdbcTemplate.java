@@ -42,4 +42,8 @@ public class UserJdbcTemplate implements UserDao {
         jdbcTemplateObject.update( SQL, 12, login, password);
     }
 
+    public void deleteUser(Integer id){
+        String SQL = "delete from User where id = ?";
+        jdbcTemplateObject.update(SQL, id);
+    }
 }
