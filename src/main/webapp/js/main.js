@@ -1,16 +1,27 @@
 
 var books = null;
 var users = null;
+var page = 5;
 
 
-function loadBooks(sortParam){
-    sortParam = "author";
+function loadBooks(sortParam, pageParam){
+
+    if (sortParam == null){
+        sortParam = "author";
+        $("#author").css('backgroundColor', 'darkgreen');
+        $("#name").css('backgroundColor', 'aqua');
+    }
+
+    if (pageParam == null){
+        pageParam = 5;
+    }
+
     $.ajax(
         {
             type: 'GET',
             dataType: 'json',
             url:'/books',
-            data: 'sortParam='+ sortParam,
+            data: 'sortParam='+ sortParam +'&pageParam='+ pageParam,
             success:
                 function(result){
                     books = null;
@@ -18,8 +29,8 @@ function loadBooks(sortParam){
                     var button = "";
                     var str = "<table> " + "<tr>" +
                         "<th> ISN </th>" +
-                        "<th> Автор </th>" +
-                        "<th> Название </th>" +
+                        "<th><div id='author' onclick='sortAuthor()'>Автор </div> </th>" +
+                        "<th><div id='name' onclick='sortName()'>Название </div> </th>" +
                         "<th> Кем взята </th>" +
                         "<th> Удалить </th>" +
                         "</tr>";
@@ -52,9 +63,25 @@ function loadBooks(sortParam){
     )
 }
 
-function sort(param){
-    alert(param)
+function getNextPage(){
+    page+=5;
+    loadBooks(null,page);
 }
+
+
+
+function sortAuthor(){
+    $("#author").css('backgroundColor', 'darkgreen');
+    $("#name").css('backgroundColor', 'aqua');
+    loadBooks('author')
+}
+
+function sortName(){
+    $("#name").css('backgroundColor', 'darkgreen');
+    $("#author").css('backgroundColor', 'aqua');
+    loadBooks('title')
+}
+
 
 
 function loadUsers(){

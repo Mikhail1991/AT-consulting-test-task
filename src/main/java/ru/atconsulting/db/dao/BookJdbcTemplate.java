@@ -36,8 +36,9 @@ public class BookJdbcTemplate implements BookDao{
     }
 
     @Override
-    public List<Book> getAllBooks(String sortParam){
-        String sql = "select * from BOOK ORDER BY " + sortParam;
+    public List<Book> getAllBooks(String sortParam, String pageParam){
+
+        String sql = "select * from BOOK ORDER BY  " + sortParam + " LIMIT " + pageParam;
         List<Book> allBooks= jdbcTemplateObject.query(sql,
                 new BookMapper());
         return  allBooks;

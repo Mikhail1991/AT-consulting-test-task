@@ -12,5 +12,5 @@ public interface BookDao {
     public void setDataSource(DataSource ds);
     public void deleteBook(Integer id);
     public void addBook(String isn, String author, String title);
-    public List<Book> getAllBooks(String sortParam);
+    public List<Book> getAllBooks(String sortParam, String pageParam);
 }

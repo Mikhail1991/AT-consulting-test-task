@@ -36,12 +36,13 @@ public class BookController {
     }
 
     @RequestMapping(value = "/books", method = RequestMethod.GET)
-    public ResponseEntity<List<JSONObject>> hello(@RequestParam(value = "sortParam") String sortParam) {
+    public ResponseEntity<List<JSONObject>> hello(@RequestParam(value = "sortParam") String sortParam,
+                                                  @RequestParam(value = "pageParam") String pageParam) {
 
         List<JSONObject> entities = new ArrayList<JSONObject>();
         List<Book> books = new ArrayList<Book>();
         try{
-            books = bookDao.getAllBooks(sortParam);
+            books = bookDao.getAllBooks(sortParam,pageParam);
         }catch(Exception ex){
             int t =9;
         }
