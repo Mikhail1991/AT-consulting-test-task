@@ -5,8 +5,7 @@ function loadBooks(sortParam, pageParam){
 
     if (sortParam == null){
         sortParam = "author";
-        $("#author").css('backgroundColor', 'darkgreen');
-        $("#name").css('backgroundColor', 'aqua');
+        $("#authorSort").css('backgroundColor', 'darkgreen');
     }
 
     if (pageParam == null){
@@ -59,10 +58,9 @@ function loadBooks(sortParam, pageParam){
     )
 }
 
-
 function deleteBook(con){
 
-    if (confirm("Вы точно хотите удалить?")){
+    if (!confirm("Вы точно хотите удалить?")){
         return;
     }
     var c = con.parentNode;
@@ -89,7 +87,7 @@ function addBook(isn, author, title){
     $.ajax({
         type:'POST',
         url:'/addBook',
-        data: 'isn='+ isn+'&author='+ author + '&title' + title,
+        data: 'isn='+ isn +'&author='+ author + '&title=' + title,
         success:
             function(result){
                 loadBooks();
@@ -126,15 +124,15 @@ function returnBook(){
 }
 
 function sortAuthor(){
-    $("#author").css('backgroundColor', 'darkgreen');
-    $("#name").css('backgroundColor', 'aqua');
-    loadBooks('author')
+    $("#authorSort").css('backgroundColor', 'darkgreen');
+    $("#name").css('backgroundColor', 'white');
+    loadBooks('author',page);
 }
 
 function sortName(){
     $("#name").css('backgroundColor', 'darkgreen');
-    $("#author").css('backgroundColor', 'aqua');
-    loadBooks('title')
+    $("#authorSort").css('backgroundColor', 'white');
+    loadBooks('title',page);
 }
 
 function getNextPage(){

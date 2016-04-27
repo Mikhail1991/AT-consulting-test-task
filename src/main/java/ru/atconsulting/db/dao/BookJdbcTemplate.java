@@ -2,6 +2,7 @@ package ru.atconsulting.db.dao;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import ru.atconsulting.db.model.Book;
@@ -31,8 +32,21 @@ public class BookJdbcTemplate implements BookDao{
 
     @Override
     public void addBook(String isn, String author, String title){
-        String SQL = "insert into Book (ID, ISN, AUTHOR, TITLE) values (?, ?, ?, ?)";
-        jdbcTemplateObject.update( SQL, 13, isn, author, title);
+        String SQL = "insert into Book (ISN, AUTHOR, TITLE) values (?, ?, ?)";
+        jdbcTemplateObject.update( SQL, isn, author, title);
+    }
+
+    @Override
+    public Book getBookByIsn(String isn){
+        Book book;
+        try{
+            String SQL = "select * from BOOK where ISN = ?";
+            book = jdbcTemplateObject.queryForObject(SQL,
+                    new Object[]{isn}, new BookMapper());
+        }catch(EmptyResultDataAccessException ex){
+            return null;
+        }
+        return book;
     }
 
     @Override

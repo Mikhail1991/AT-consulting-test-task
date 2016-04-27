@@ -8,9 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class BookMapper implements RowMapper {
+public class BookMapper implements RowMapper<Book> {
     @Override
-    public Object mapRow(ResultSet resultSet, int i) throws SQLException {
+    public Book mapRow(ResultSet resultSet, int i) throws SQLException {
         Book book = new Book();
         book.setId(resultSet.getInt("id"));
         book.setIsn(resultSet.getString("isn"));

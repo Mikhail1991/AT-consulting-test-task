@@ -26,11 +26,15 @@ public class BookController {
         bookDao.deleteBook(Integer.valueOf(id));
         return new ResponseEntity(HttpStatus.OK);
     }
+
     @RequestMapping(value = "/addBook", method = RequestMethod.POST)
     public ResponseEntity addBook(@RequestParam(value = "isn") String isn,
                                   @RequestParam(value = "author") String author,
                                   @RequestParam(value = "title") String title){
-        bookDao.addBook(isn,author,title);
+        if (!(bookDao.getBookByIsn(isn) == null)){
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+        bookDao.addBook(isn, author, title);
         return new ResponseEntity(HttpStatus.OK);
     }
 
