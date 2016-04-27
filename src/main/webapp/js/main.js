@@ -36,7 +36,7 @@ function loadBooks(sortParam){
                         "<td>" + result[i].author + "</td>" +
                         "<td>" + result[i].title + "</td>" +
                         "<td>" +  button + "</td>" +
-                        "<td><button onclick='deleteBook()'>Удалить</button></td>" +
+                        "<td><button onclick='deleteBook(this)'>Удалить</button></td>" +
                         + "</tr>";
                     }
                     str+="</table>";
@@ -91,12 +91,8 @@ function loadUsers(){
 
 
 function deleteUser(c){
-
-
     var context = c.parentNode;
-
     var con = context.parentNode;
-
     alert(con.rowIndex);
     var id = users[con.rowIndex-1].id;
     $.ajax({
@@ -137,7 +133,10 @@ function getBook(){
 
 }
 
-function deleteBook(id){
+function deleteBook(con){
+    var c = con.parentNode;
+    var cc = c.parentNode;
+    var id = books[cc.rowIndex-1].id;
     $.ajax({
         type:'POST',
         dataType:'json',

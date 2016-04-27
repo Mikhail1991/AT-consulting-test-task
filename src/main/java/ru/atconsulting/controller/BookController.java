@@ -46,8 +46,6 @@ public class BookController {
             int t =9;
         }
 
-
-
         for (Book n : books) {
             JSONObject entity = new JSONObject();
             entity.put("id", n.getId());
@@ -57,7 +55,6 @@ public class BookController {
             entity.put("owner", n.getOwner());
             entities.add(entity);
         }
-
         return new ResponseEntity<List<JSONObject>>(entities, HttpStatus.OK);
     }
 }
