@@ -48,11 +48,15 @@ public class UserController {
     public  ResponseEntity addUser(@RequestParam(value = "login") String login, @RequestParam(value = "password") String password){
 
         try{
+            if (!(userDao.getUserByLogin(login) == null)){
+                return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            }
             userDao.addUser(login,password);
         }catch(Exception ex){
             int t= 9;
         }
-        return null;
+
+        return new ResponseEntity(HttpStatus.OK);
     }
     @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
     public ResponseEntity deleteUser(@RequestParam(value = "id") String id){

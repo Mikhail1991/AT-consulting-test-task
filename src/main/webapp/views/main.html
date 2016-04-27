@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <script type="text/javascript" src="../js/lib/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="../js/lib/jquery.idTabs.min.js"></script>
+    <script type="text/javascript" src="../js/bookService.js"></script>
+    <script type="text/javascript" src="../js/userService.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
     <script type="text/javascript" src="../js/modal.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
@@ -11,7 +13,7 @@
     <title>Библиотека</title>
 </head>
 <body>
-<a href="book.html">jdkfsjfdkljfsklfjdksfjsljfdkslfjdlskfjdsklfjl</a>
+
 
 
 <ul class="idTabs">
@@ -21,7 +23,7 @@
 
 <div id="books">
     <p>Подгружаем таблицу раз (книги)</p>
-    <button onclick="addBook()"><a href="#dialogBook" name="modal">Добавить книгу</a></button>
+    <button><a href="#dialogBook" name="modal">Добавить книгу</a></button>
     <div id="booksTable">
 
     </div>
@@ -29,7 +31,7 @@
 </div>
 <div id="users">
     <p>Подгружаем таблицу два (пользователи)</p>
-    <button onclick="addUser()"><a href="#dialog" name="modal">Добавить пользователя</a></button>
+    <button><a href="#dialogUser" name="modal">Добавить пользователя</a></button>
     <div id="usersTable">
 
     </div>
@@ -37,34 +39,34 @@
 </div>
 
 <div id="boxes">
-    <div id="dialog" class="window">
+    <div id="dialogUser" class="window">
         Добавление пользователя
-        <a href="#"class="close"/>Закрыть его</a>
+        <a href="#"class="close"/>Закрыть</a>
 
         <div>
             <p>Введите имя</p>
-            <input id="login" type="text" size="40">
+            <input id="login" type="text" size="50">
             <br>
             <p>Введите пароль</p>
-            <input id="password" type="text" size="40">
+            <input id="password" type="text" size="50">
         </div>
         <br>
-        <button onclick="confirm()">Подтвердить</button>
+        <button onclick="confirmAddUser()">Подтвердить</button>
     </div>
 
     <div id="dialogBook" class="window">
-        Добавление пользователя
-        <a href="#"class="close"/>Закрыть его</a>
+        Добавление книги
+        <a href="#"class="close"/>Закрыть</a>
 
         <div>
             <p>Введите ISN</p>
-            <input id="isn" type="text" size="40">
+            <input id="isn" type="text" size="50">
             <br>
             <p>Введите автора</p>
-            <input id="author" type="text" size="40">
+            <input id="author" type="text" size="50">
             <br>
             <p>Введите название</p>
-            <input id="title" type="text" size="40">
+            <input id="title" type="text" size="50">
             <br>
         </div>
         <br>

@@ -1,6 +1,5 @@
 package ru.atconsulting.controller;
 
-
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -12,28 +12,39 @@ a:hover {color:#ccc; text-decoration:none}
     background-color:#000;
     display:none;
 }
-
 #boxes .window {
     position:absolute;
     left:0;
     top:0;
-    width:440px;
+    width:430px;
     height:200px;
     display:none;
     z-index:9999;
     padding:20px;
 }
-#boxes #dialog {
-    width:375px;
+#boxes #dialogUser {
+    width:390px;
     height:203px;
     padding:10px;
     background-color:#ffffff;
 }
 
-#author{
+#boxes #dialogBook {
+    width:390px;
+    height:280px;
+    padding:10px;
+    background-color:#ffffff;
+}
+
+#authorSort{
     background-color: aqua;
 }
 
 #name{
     background-color: aqua;
 }
+
+table, th, td{
+    border: 1px solid black;
+}
+

@@ -1,6 +1,7 @@
 package ru.atconsulting.db.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import ru.atconsulting.db.model.User;
@@ -28,9 +29,24 @@ public class UserJdbcTemplate implements UserDao {
         return user;
     }
 
+    public User getUserByLogin(String login){
+        User user;
+        try{
+            String SQL = "select * from USER where NAME = ?";
+            user = jdbcTemplateObject.queryForObject(SQL,
+                    new Object[]{login}, new UserMapper());
+        }catch(EmptyResultDataAccessException ex){
+            return null;
+        }
+
+
+        return user;
+    }
+
+
     @Override
     public List<User> getAllUsers() {
-        String sql = "select * from User";
+        String sql = "select * from User ORDER BY NAME";
         List <User> allUsers = jdbcTemplateObject.query(sql,
                 new UserMapper());
         return  allUsers;
@@ -38,8 +54,8 @@ public class UserJdbcTemplate implements UserDao {
 
     @Override
     public void addUser(String login, String password) {
-        String SQL = "insert into User (ID, NAME, PASSWORD) values (?, ?, ?)";
-        jdbcTemplateObject.update( SQL, 12, login, password);
+        String SQL = "insert into User (NAME, PASSWORD) values (?, ?)";
+        jdbcTemplateObject.update( SQL, login, password);
     }
 
     public void deleteUser(Integer id){
