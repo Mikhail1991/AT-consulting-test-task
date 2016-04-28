@@ -14,4 +14,6 @@ public interface BookDao {
     public void addBook(String isn, String author, String title);
     public List<Book> getAllBooks(String sortParam, String pageParam);
     public Book getBookByIsn(String isn);
+    public void getBook(Integer id, String user);
+    public void returnBook(Integer id);
 }

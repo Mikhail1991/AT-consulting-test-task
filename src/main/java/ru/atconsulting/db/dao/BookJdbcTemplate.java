@@ -50,6 +50,18 @@ public class BookJdbcTemplate implements BookDao{
     }
 
     @Override
+    public void getBook(Integer id, String user) {
+        String SQL = "update BOOK set OWNER = ? where id = ?";
+        jdbcTemplateObject.update(SQL, user, id);
+    }
+
+    @Override
+    public void returnBook(Integer id){
+        String SQL = "update BOOK set OWNER = null where id = ?";
+        jdbcTemplateObject.update(SQL, id);
+    }
+
+    @Override
     public List<Book> getAllBooks(String sortParam, String pageParam){
 
         String sql = "select * from BOOK ORDER BY  " + sortParam + " LIMIT " + pageParam;

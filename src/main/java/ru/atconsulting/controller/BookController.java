@@ -4,6 +4,8 @@ import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +22,18 @@ public class BookController {
 
     @Autowired
     private BookJdbcTemplate bookDao;
+
+    @RequestMapping(value = "/getBook", method = RequestMethod.POST)
+    public ResponseEntity getBook(@RequestParam(value = "id") String id, @RequestParam(value = "user") String user){
+        bookDao.getBook(Integer.parseInt(id),user);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/returnBook", method = RequestMethod.POST)
+    public ResponseEntity returnBook(@RequestParam(value = "id") String id) {
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/deleteBook", method = RequestMethod.POST)
     public ResponseEntity deleteBook(@RequestParam(value = "id") String id){

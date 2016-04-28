@@ -1,8 +1,25 @@
 var books = null;
 var page = 5;
+var currentUser = "";
+
+function getLogin(){
+    $.ajax({
+        type:'POST',
+        dataType:'json',
+        url:'/getLogin',
+        success:
+            function(result){
+                currentUser = result.name;
+            },
+        error:
+            function(result){
+                alert("Ошибка при получении текущего пользователя");
+            }
+    })
+}
 
 function loadBooks(sortParam, pageParam){
-
+    getLogin();
     if (sortParam == null){
         sortParam = "author";
         $("#authorSort").css('backgroundColor', 'darkgreen');
@@ -33,11 +50,28 @@ function loadBooks(sortParam, pageParam){
 
                     for (var i=0;i<result.length;++i){
 
-                        if (result[i].owner == 'busy'){
-                            button = "<button onclick='getBook()'>Взять книгу</button>";
-                        } else {
-                            button = "<button onclick='returnBook()'>Отдать книгу</button>"
+                        switch (result[i].owner){
+                            case null:
+                                button = "<button onclick='getBook(this)'>Взять книгу</button>";
+                                break;
+                            case currentUser:
+                                button = "<button onclick='returnBook(this)'>Отдать книгу</button>";
+                                break;
+                            default :
+                                button = result[i].owner;
+
                         }
+
+                        /*
+                        if (result[i].owner == null){
+                            button = "<button onclick='getBook()'>Взять книгу</button>";
+                        }
+                        if (result[i].owner == currentUser){
+                            button = "<button onclick='returnBook()'>Отдать книгу</button>"
+                        } else {
+                        }
+                        */
+
                         str+="<tr>" +
                         "<td>" + result[i].isn + "</td>" +
                         "<td>" + result[i].author + "</td>" +
@@ -107,18 +141,40 @@ function confirmBook(){
     addBook(isn, author, title)
 }
 
-function returnBook(){
+function getBook(con){
+    var c = con.parentNode;
+    var cc = c.parentNode;
+    var id = books[cc.rowIndex-1].id;
     $.ajax({
-        type: 'POST',
-        dataType:'json',
-        url:'/returnBook',
+        type:'POST',
+        url:'/getBook',
+        data: 'id=' + id + '&user=' + currentUser,
         success:
             function(result){
-                alert('Успех')
+                loadBooks();
             },
         error:
             function(result){
-                alert('Неуспех')
+
+            }
+    })
+}
+
+
+function returnBook(con){
+    var c = con.parentNode;
+    var cc = c.parentNode;
+    var id = books[cc.rowIndex-1].id;
+    $.ajax({
+        type: 'POST',
+        url:'/returnBook',
+        data:'id=' + id + '&user=' + currentUser,
+        success:
+            function(result){
+                loadBooks();
+            },
+        error:
+            function(result){
             }
     });
 }
@@ -140,6 +196,3 @@ function getNextPage(){
     loadBooks(null,page);
 }
 
-function getBook(){
-
-}

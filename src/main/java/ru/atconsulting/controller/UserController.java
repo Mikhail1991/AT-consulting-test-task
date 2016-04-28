@@ -21,10 +21,6 @@ public class UserController {
     @Autowired
     private UserJdbcTemplate userDao;
 
-    @RequestMapping(value = "/returnBook", method = RequestMethod.POST)
-    public ResponseEntity returnBook() {
-        return new ResponseEntity(HttpStatus.OK);
-    }
 
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
