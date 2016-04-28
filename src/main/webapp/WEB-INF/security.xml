@@ -1,0 +1,38 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+
+       <http>
+              <intercept-url pattern="/*" access="hasRole('USER')" />
+              <intercept-url pattern="/views/*" access="hasRole('USER')" />
+              <form-login  />
+              <logout />
+              <csrf disabled="true"/>
+       </http>
+
+
+       <!--
+       <http use-expressions="true"  >
+              <intercept-url pattern="/login.jsp" access="hasRole('ROLE_ANONYMOUS')" />
+              <intercept-url pattern="/views/*" access="hasRole('ROLE_ANONYMOUS')" />
+              <intercept-url pattern="/j_spring_security_check" access="hasRole('ROLE_USER')"/>
+              <form-login login-page="/login.jsp" default-target-url="/index.jsp" username-parameter="j_username" password-parameter="j_password" always-use-default-target='true'
+                          authentication-failure-url="/error403.jsp" />
+              <logout logout-url="/logout" logout-success-url="/login.jsp"/>
+              <csrf disabled="true"/>
+              <remember-me />
+       </http>
+       -->
+       <authentication-manager>
+              <authentication-provider>
+                     <user-service>
+                            <user name="admin" password="1" authorities="ROLE_ADMIN" />
+                            <user name="us" password="1" authorities="ROLE_USER" />
+                     </user-service>
+              </authentication-provider>
+       </authentication-manager>
+
+</beans:beans>

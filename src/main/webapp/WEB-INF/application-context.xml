@@ -21,6 +21,9 @@
        Note that, with Spring 3.0, this tag works in Servlet MVC only!  -->
        <mvc:annotation-driven />
 
+
+
        <import resource="spring-servlet.xml" />
        <import resource="spring-datasource.xml"/>
+       <import resource="security.xml"/>
 </beans>
