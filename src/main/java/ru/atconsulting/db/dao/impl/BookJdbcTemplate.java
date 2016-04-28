@@ -1,10 +1,12 @@
-package ru.atconsulting.db.dao;
+package ru.atconsulting.db.dao.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import ru.atconsulting.db.dao.BookDao;
+import ru.atconsulting.db.dao.mappers.BookMapper;
 import ru.atconsulting.db.model.Book;
 
 import javax.sql.DataSource;
@@ -12,7 +14,7 @@ import java.util.List;
 
 
 @Repository
-public class BookJdbcTemplate implements BookDao{
+public class BookJdbcTemplate implements BookDao {
 
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplateObject;

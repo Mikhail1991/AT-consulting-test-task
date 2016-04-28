@@ -20,4 +20,6 @@ public interface UserDao {
     public void deleteUser(Integer id);
 
     public void changeUserData(String login, String Password);
+
+    public User getUserByLogin(String login);
 }

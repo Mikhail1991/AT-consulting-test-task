@@ -1,4 +1,4 @@
-package ru.atconsulting.db.dao;
+package ru.atconsulting.db.dao.mappers;
 
 import org.springframework.jdbc.core.RowMapper;
 import ru.atconsulting.db.model.User;

@@ -1,9 +1,11 @@
-package ru.atconsulting.db.dao;
+package ru.atconsulting.db.dao.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import ru.atconsulting.db.dao.UserDao;
+import ru.atconsulting.db.dao.mappers.UserMapper;
 import ru.atconsulting.db.model.User;
 
 import javax.sql.DataSource;
@@ -29,6 +31,7 @@ public class UserJdbcTemplate implements UserDao {
         return user;
     }
 
+    @Override
     public User getUserByLogin(String login){
         User user;
         try{
