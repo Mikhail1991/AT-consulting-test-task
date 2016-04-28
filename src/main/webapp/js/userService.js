@@ -14,8 +14,7 @@ function loadUsers(){
                         "<th> name </th>" + "<th> surname </th>"  + "</tr>";
 
                     for (var i=0;i<result.length;++i){
-                        str+="<tr id=i>" +
-                        //"<td>"+  result[i].name + "</td>" +
+                        str+="<tr>" +
                         "<td><div id='boxes'><a href='#dialogUserChange' onclick='showModal(this, event)'>"+ result[i].name + "</a></div></td>" +
                         "<td>"+ result[i].surname + "</td>" +
                         "<td><button onclick='deleteUser(this)'>Удалить польтзователя</button></td>"    +
@@ -90,7 +89,7 @@ function changeUserData(password, login){
         data: 'login=' + login + '&password=' + password,
         success:
             function(result){
-
+                loadUsers();
             },
         error:
             function(result){

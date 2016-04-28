@@ -63,7 +63,7 @@ function loadBooks(sortParam, pageParam){
                         }
 
                         str+="<tr>" +
-                        "<td>" + result[i].isn + "</td>" +
+                        "<td><a href='#dialogBookChange' onclick='showModal(this, event)'>" + result[i].isn + "</a></td>" +
                         "<td>" + result[i].author + "</td>" +
                         "<td>" + result[i].title + "</td>" +
                         "<td>" +  button + "</td>" +
@@ -158,7 +158,6 @@ function getBook(con){
     })
 }
 
-
 function returnBook(con){
     var c = con.parentNode;
     var cc = c.parentNode;
@@ -191,3 +190,26 @@ function getNextPage(){
     loadBooks(null,page);
 }
 
+function confirmChangeBookData(){
+    var isn = $("#changeIsn").val();
+    var author = $("#changeAuthor").val();
+    var title = $("#changeTitle").val();
+    changeBookData(isn,author,title);
+}
+
+function changeBookData(isn, author, title){
+    $.ajax({
+        type:'POST',
+        url:'/changeBookData',
+        data: 'isn='+isn+'&author='+ author+ '&title=' + title,
+        success:
+            function(result){
+                loadBooks();
+            },
+        error:
+            function(result){
+                console.log("Не удалось изменить данные книги");
+            }
+    })
+
+}

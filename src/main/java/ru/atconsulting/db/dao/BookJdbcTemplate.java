@@ -69,4 +69,9 @@ public class BookJdbcTemplate implements BookDao{
                 new BookMapper());
         return  allBooks;
     }
+
+    public void changeBookData(String isn, String author, String title){
+        String SQL = "update BOOK set AUTHOR = ?, TITLE = ? where ISN = ?";
+        jdbcTemplateObject.update(SQL, author, title, isn);
+    }
 }

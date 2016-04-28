@@ -51,6 +51,13 @@ public class BookController {
         bookDao.addBook(isn, author, title);
         return new ResponseEntity(HttpStatus.OK);
     }
+    @RequestMapping(value = "/changeBookData", method = RequestMethod.POST)
+    public ResponseEntity changeBookData(@RequestParam(value = "isn") String isn,
+                                         @RequestParam(value = "author") String author,
+                                         @RequestParam(value = "title") String title){
+        bookDao.changeBookData(isn, author, title);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/books", method = RequestMethod.GET)
     public ResponseEntity<List<JSONObject>> hello(@RequestParam(value = "sortParam") String sortParam,
@@ -61,8 +68,8 @@ public class BookController {
         try{
             books = bookDao.getAllBooks(sortParam,pageParam);
         }catch(Exception ex){
-            int t =9;
         }
+
         for (Book n : books) {
             JSONObject entity = new JSONObject();
             entity.put("id", n.getId());

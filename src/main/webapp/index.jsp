@@ -72,9 +72,6 @@
         <button onclick="confirmChangeUserData()">Подтвердить</button>
     </div>
 
-
-
-
     <div id="dialogBook" class="window">
         Добавление книги
         <a href="#" class="close"/>Закрыть</a>
@@ -95,6 +92,29 @@
         <br>
         <button onclick="confirmBook()">Подтвердить</button>
     </div>
+
+    <div id="dialogBookChange" class="window">
+        Добавление книги
+        <a href="#" class="close"/>Закрыть</a>
+
+        <div>
+            <p>Введите ISN</p>
+            <input id="changeIsn" type="text" size="50">
+            <br>
+
+            <p>Введите автора</p>
+            <input id="changeAuthor" type="text" size="50">
+            <br>
+
+            <p>Введите название</p>
+            <input id="changeTitle" type="text" size="50">
+            <br>
+        </div>
+
+        <br>
+        <button onclick="confirmChangeBookData()">Подтвердить</button>
+    </div>
+
 
     <div id="mask"></div>
 </div>
