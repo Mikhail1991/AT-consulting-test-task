@@ -19,6 +19,7 @@ function getLogin(){
 }
 
 function loadBooks(sortParam, pageParam){
+
     getLogin();
     if (sortParam == null){
         sortParam = "author";
@@ -59,18 +60,7 @@ function loadBooks(sortParam, pageParam){
                                 break;
                             default :
                                 button = result[i].owner;
-
                         }
-
-                        /*
-                        if (result[i].owner == null){
-                            button = "<button onclick='getBook()'>Взять книгу</button>";
-                        }
-                        if (result[i].owner == currentUser){
-                            button = "<button onclick='returnBook()'>Отдать книгу</button>"
-                        } else {
-                        }
-                        */
 
                         str+="<tr>" +
                         "<td>" + result[i].isn + "</td>" +
@@ -82,11 +72,19 @@ function loadBooks(sortParam, pageParam){
                     }
                     str+="</table>";
                     $('#booksTable').html(str);
+
+                    if (sortParam == 'author'){
+                        $("#authorSort").css('backgroundColor', 'darkgreen');
+                        $("#name").css('backgroundColor', 'white');
+                    }
+                    if (sortParam == 'title'){
+                        $("#name").css('backgroundColor', 'darkgreen');
+                        $("#authorSort").css('backgroundColor', 'white');
+                    }
                 },
             error:
                 function(result){
-                    var s = result;
-
+                    console.log("Не удалось загрузить список книг");
                 }
         }
     )
@@ -110,7 +108,7 @@ function deleteBook(con){
             },
         error:
             function(result){
-                alert("Не удалось удалить книгу")
+                console.log("Не удалось удалить книгу");
             }
     });
 
@@ -128,7 +126,7 @@ function addBook(isn, author, title){
             },
         error:
             function(result){
-                alert("НЕ удалось добваить книгу")
+                console.log("Не удалось добваить книгу");
             }
     });
 
@@ -155,7 +153,7 @@ function getBook(con){
             },
         error:
             function(result){
-
+                console.log("Не удалось взять книгу")
             }
     })
 }
@@ -175,19 +173,16 @@ function returnBook(con){
             },
         error:
             function(result){
+                console.log("Не удалось вернуть книгу")
             }
     });
 }
 
 function sortAuthor(){
-    $("#authorSort").css('backgroundColor', 'darkgreen');
-    $("#name").css('backgroundColor', 'white');
     loadBooks('author',page);
 }
 
 function sortName(){
-    $("#name").css('backgroundColor', 'darkgreen');
-    $("#authorSort").css('backgroundColor', 'white');
     loadBooks('title',page);
 }
 

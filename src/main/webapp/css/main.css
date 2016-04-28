@@ -36,6 +36,20 @@ a:hover {color:#ccc; text-decoration:none}
     background-color:#ffffff;
 }
 
+#boxes #dialogBookChange {
+    width:390px;
+    height:280px;
+    padding:10px;
+    background-color:#ffffff;
+}
+
+#boxes #dialogUserChange {
+    width:390px;
+    height:203px;
+    padding:10px;
+    background-color:#ffffff;
+}
+
 #authorSort{
     background-color: #ffffff;
 }

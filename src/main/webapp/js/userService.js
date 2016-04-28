@@ -15,7 +15,8 @@ function loadUsers(){
 
                     for (var i=0;i<result.length;++i){
                         str+="<tr id=i>" +
-                        "<td>"+  result[i].name + "</td>" +
+                        //"<td>"+  result[i].name + "</td>" +
+                        "<td><div id='boxes'><a href='#dialogUserChange' onclick='showModal(this, event)'>"+ result[i].name + "</a></div></td>" +
                         "<td>"+ result[i].surname + "</td>" +
                         "<td><button onclick='deleteUser(this)'>Удалить польтзователя</button></td>"    +
                         "</tr>";
@@ -25,27 +26,31 @@ function loadUsers(){
                 },
             error:
                 function(result){
-
+                    console.log("Не удалось загрузить таблицу пользователей")
                 }
         }
     )
 }
 
 function deleteUser(c){
+
+    if (!confirm("Вы точно хотите удалить?")){
+        return;
+    }
     var context = c.parentNode;
     var con = context.parentNode;
-    //var id = ;
+    var id = users[con.rowIndex-1].id;
     $.ajax({
         type:'POST',
         url:'/deleteUser',
-        data:'id=' + users[con.rowIndex-1].id,
+        data:'id=' + id,
         success:
             function(result){
                 loadUsers();
             },
         error:
             function(){
-                alert("Не получилось удалить пользователя.")
+                console.log("Не получилось удалить пользователя.");
             }
     });
 }
@@ -61,7 +66,7 @@ function addUser(login,password){
             },
         error:
             function(result){
-                alert("Пользователь с таким именем уже существует!")
+                console.log("Пользователь с таким именем уже существует!");
             }
     });
 }
@@ -71,3 +76,39 @@ function confirmAddUser(){
     var password = $("#password").val();
     addUser(login,password);
 }
+
+function confirmChangeUserData(){
+    var login = $("#changeLogin").val();
+    var password = $("#changePassword").val();
+    changeUserData(password,login);
+}
+
+function changeUserData(password, login){
+    $.ajax({
+        type:'POST',
+        url:'/changeUser',
+        data: 'login=' + login + '&password=' + password,
+        success:
+            function(result){
+
+            },
+        error:
+            function(result){
+                console.log("Не удалось изменить данные пользователя")
+            }
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

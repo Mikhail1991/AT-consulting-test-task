@@ -38,11 +38,8 @@ public class UserJdbcTemplate implements UserDao {
         }catch(EmptyResultDataAccessException ex){
             return null;
         }
-
-
         return user;
     }
-
 
     @Override
     public List<User> getAllUsers() {
@@ -57,9 +54,15 @@ public class UserJdbcTemplate implements UserDao {
         String SQL = "insert into User (NAME, PASSWORD) values (?, ?)";
         jdbcTemplateObject.update( SQL, login, password);
     }
-
+    @Override
     public void deleteUser(Integer id){
         String SQL = "delete from User where id = ?";
         jdbcTemplateObject.update(SQL, id);
     }
+    @Override
+    public void changeUserData(String login, String password){
+        String SQL = "update USER set PASSWORD = ? where NAME = ?";
+        jdbcTemplateObject.update(SQL, password, login);
+    }
+
 }

@@ -7,7 +7,6 @@
     <script type="text/javascript" src="js/lib/jquery.idTabs.min.js"></script>
     <script type="text/javascript" src="js/bookService.js"></script>
     <script type="text/javascript" src="js/userService.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/modal.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 
@@ -31,14 +30,13 @@
     <br>
     <button onclick="getNextPage()">Показать ещё</button>
 </div>
+
 <div id="users">
     <p>Подгружаем таблицу два (пользователи)</p>
     <button><a href="#dialogUser" name="modal">Добавить пользователя</a></button>
     <div id="usersTable">
 
     </div>
-    <br>
-    <button>Показать ещё</button>
 </div>
 
 <div id="boxes">
@@ -57,6 +55,25 @@
         <br>
         <button onclick="confirmAddUser()">Подтвердить</button>
     </div>
+
+    <div id="dialogUserChange" class="window">
+        Изменить данные пользователя
+        <a href="#" class="close"/>Закрыть</a>
+
+        <div>
+            <p>Введите имя</p>
+            <input id="changeLogin" type="text" size="50">
+            <br>
+
+            <p>Введите пароль</p>
+            <input id="changePassword" type="text" size="50">
+        </div>
+        <br>
+        <button onclick="confirmChangeUserData()">Подтвердить</button>
+    </div>
+
+
+
 
     <div id="dialogBook" class="window">
         Добавление книги

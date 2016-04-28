@@ -18,4 +18,6 @@ public interface UserDao {
     public void addUser(String login, String password);
 
     public void deleteUser(Integer id);
+
+    public void changeUserData(String login, String Password);
 }
