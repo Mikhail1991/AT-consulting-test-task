@@ -31,7 +31,7 @@ public class BookController {
 
     @RequestMapping(value = "/returnBook", method = RequestMethod.POST)
     public ResponseEntity returnBook(@RequestParam(value = "id") String id) {
-
+        bookDao.returnBook(Integer.parseInt(id));
         return new ResponseEntity(HttpStatus.OK);
     }
 
