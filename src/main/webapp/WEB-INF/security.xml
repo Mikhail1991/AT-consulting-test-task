@@ -13,23 +13,10 @@ http://www.springframework.org/schema/security/spring-security-4.0.xsd">
               <csrf disabled="true"/>
        </http>
 
-
-       <!--
-       <http use-expressions="true"  >
-              <intercept-url pattern="/login.jsp" access="hasRole('ROLE_ANONYMOUS')" />
-              <intercept-url pattern="/views/*" access="hasRole('ROLE_ANONYMOUS')" />
-              <intercept-url pattern="/j_spring_security_check" access="hasRole('ROLE_USER')"/>
-              <form-login login-page="/login.jsp" default-target-url="/index.jsp" username-parameter="j_username" password-parameter="j_password" always-use-default-target='true'
-                          authentication-failure-url="/error403.jsp" />
-              <logout logout-url="/logout" logout-success-url="/login.jsp"/>
-              <csrf disabled="true"/>
-              <remember-me />
-       </http>
-       -->
        <authentication-manager>
               <authentication-provider>
                      <user-service>
-                            <user name="admin" password="1" authorities="ROLE_ADMIN" />
+                            <user name="admin" password="1" authorities="ROLE_USER" />
                             <user name="us" password="1" authorities="ROLE_USER" />
                      </user-service>
               </authentication-provider>

@@ -63,7 +63,6 @@ public class BookController {
         }catch(Exception ex){
             int t =9;
         }
-
         for (Book n : books) {
             JSONObject entity = new JSONObject();
             entity.put("id", n.getId());

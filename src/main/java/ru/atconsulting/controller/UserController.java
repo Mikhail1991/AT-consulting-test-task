@@ -21,8 +21,6 @@ public class UserController {
     @Autowired
     private UserJdbcTemplate userDao;
 
-
-
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public ResponseEntity<List<JSONObject>> loadUsers() {
         List<JSONObject> entities = new ArrayList<JSONObject>();

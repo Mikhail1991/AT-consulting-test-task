@@ -17,8 +17,6 @@
 <body>
 <h3>Библиотека</h3>
 
-<button onclick="login()">Логин</button>
-
 <ul class="idTabs">
     <li><a href="#books" onclick="loadBooks()">Книги</a></li>
     <li><a href="#users" onclick="loadUsers()">Пользователи</a></li>
@@ -30,6 +28,7 @@
     <div id="booksTable">
 
     </div>
+    <br>
     <button onclick="getNextPage()">Показать ещё</button>
 </div>
 <div id="users">
@@ -38,6 +37,7 @@
     <div id="usersTable">
 
     </div>
+    <br>
     <button>Показать ещё</button>
 </div>
 
