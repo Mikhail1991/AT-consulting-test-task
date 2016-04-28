@@ -46,7 +46,7 @@ public class BookController {
                                   @RequestParam(value = "author") String author,
                                   @RequestParam(value = "title") String title){
         if (!(bookDao.getBookByIsn(isn) == null)){
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(HttpStatus.FORBIDDEN);
         }
         bookDao.addBook(isn, author, title);
         return new ResponseEntity(HttpStatus.OK);

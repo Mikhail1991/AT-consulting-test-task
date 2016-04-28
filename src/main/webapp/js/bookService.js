@@ -126,6 +126,9 @@ function addBook(isn, author, title){
             },
         error:
             function(result){
+                if (result.status == 403){
+                    alert("Книга с таким ISN уже есть в базе")
+                }
                 console.log("Не удалось добваить книгу");
             }
     });

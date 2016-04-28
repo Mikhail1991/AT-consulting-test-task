@@ -4,7 +4,6 @@ package ru.atconsulting.db.model;
 public class User {
     private Integer id;
     private String name;
-    private String surname;
     private String password;
 
     public User() {
@@ -13,7 +12,6 @@ public class User {
     public User(Integer id, String name, String surname, String password) {
         this.id = id;
         this.name = name;
-        this.surname = surname;
         this.password = password;
     }
 
@@ -31,14 +29,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 
     public String getPassword() {

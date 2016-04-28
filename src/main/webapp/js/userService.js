@@ -16,7 +16,6 @@ function loadUsers(){
                     for (var i=0;i<result.length;++i){
                         str+="<tr>" +
                         "<td><div id='boxes'><a href='#dialogUserChange' onclick='showModal(this, event)'>"+ result[i].name + "</a></div></td>" +
-                        "<td>"+ result[i].surname + "</td>" +
                         "<td><button onclick='deleteUser(this)'>Удалить польтзователя</button></td>"    +
                         "</tr>";
                     }
@@ -65,6 +64,9 @@ function addUser(login,password){
             },
         error:
             function(result){
+                if (result.status == 403){
+                    alert("Пользователь с таким именем уже существует")
+                }
                 console.log("Пользователь с таким именем уже существует!");
             }
     });
@@ -97,17 +99,3 @@ function changeUserData(password, login){
             }
     })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

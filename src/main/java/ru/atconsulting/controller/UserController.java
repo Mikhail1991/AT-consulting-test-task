@@ -30,7 +30,6 @@ public class UserController {
             JSONObject entity = new JSONObject();
             entity.put("id",u.getId());
             entity.put("name", u.getName());
-            entity.put("surname", u.getSurname());
             entities.add(entity);
         }
 
@@ -43,11 +42,11 @@ public class UserController {
                                    @RequestParam(value = "password") String password){
         try{
             if (!(userDao.getUserByLogin(login) == null)){
-                return new ResponseEntity(HttpStatus.BAD_REQUEST);
+                return new ResponseEntity(HttpStatus.FORBIDDEN);
             }
             userDao.addUser(login,password);
         }catch(Exception ex){
-            int t= 9;
+
         }
         return new ResponseEntity(HttpStatus.OK);
     }
