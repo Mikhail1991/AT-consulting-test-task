@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.atconsulting.db.dao.BookJdbcTemplate;
+
+import ru.atconsulting.db.dao.impl.BookJdbcTemplate;
 import ru.atconsulting.db.model.Book;
 
 import java.util.ArrayList;
