@@ -8,7 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.http.ResponseEntity;
-import ru.atconsulting.db.dao.UserJdbcTemplate;
+
+import ru.atconsulting.db.dao.impl.UserJdbcTemplate;
 import ru.atconsulting.db.model.User;
 
 import java.util.ArrayList;

@@ -1,0 +1,1 @@
+java -cp ../lib/hsqldb.jar org.hsqldb.server.Server --database.0 file:pms --dbname.0 pms

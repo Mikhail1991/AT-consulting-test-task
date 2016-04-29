@@ -5,9 +5,6 @@ import ru.atconsulting.db.model.User;
 import javax.sql.DataSource;
 import java.util.List;
 
-/**
- * Created by Mike on 27.04.2016.
- */
 public interface UserDao {
     public void setDataSource(DataSource ds);
 
