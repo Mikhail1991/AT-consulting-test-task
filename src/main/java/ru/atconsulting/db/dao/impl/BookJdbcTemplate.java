@@ -28,13 +28,13 @@ public class BookJdbcTemplate implements BookDao {
 
     @Override
     public void deleteBook(Integer id) {
-        String SQL = "delete from Book where id = ?";
+        String SQL = "delete from book where id = ?";
         jdbcTemplateObject.update(SQL, id);
     }
 
     @Override
     public void addBook(String isn, String author, String title){
-        String SQL = "insert into Book (ISN, AUTHOR, TITLE) values (?, ?, ?)";
+        String SQL = "insert into book (ISN, AUTHOR, TITLE) values (?, ?, ?)";
         jdbcTemplateObject.update( SQL, isn, author, title);
     }
 
@@ -42,7 +42,7 @@ public class BookJdbcTemplate implements BookDao {
     public Book getBookByIsn(String isn){
         Book book;
         try{
-            String SQL = "select * from BOOK where ISN = ?";
+            String SQL = "select * from book where ISN = ?";
             book = jdbcTemplateObject.queryForObject(SQL,
                     new Object[]{isn}, new BookMapper());
         }catch(EmptyResultDataAccessException ex){
@@ -53,27 +53,27 @@ public class BookJdbcTemplate implements BookDao {
 
     @Override
     public void getBook(Integer id, String user) {
-        String SQL = "update BOOK set OWNER = ? where id = ?";
+        String SQL = "update book set OWNER = ? where id = ?";
         jdbcTemplateObject.update(SQL, user, id);
     }
 
     @Override
     public void returnBook(Integer id){
-        String SQL = "update BOOK set OWNER = null where id = ?";
+        String SQL = "update book set OWNER = null where id = ?";
         jdbcTemplateObject.update(SQL, id);
     }
 
     @Override
     public List<Book> getAllBooks(String sortParam, String pageParam){
 
-        String sql = "select * from BOOK ORDER BY  " + sortParam + " LIMIT " + pageParam;
+        String sql = "select * from book ORDER BY  " + sortParam + " LIMIT " + pageParam;
         List<Book> allBooks= jdbcTemplateObject.query(sql,
                 new BookMapper());
         return  allBooks;
     }
 
     public void changeBookData(String isn, String author, String title){
-        String SQL = "update BOOK set AUTHOR = ?, TITLE = ? where ISN = ?";
+        String SQL = "update book set AUTHOR = ?, TITLE = ? where ISN = ?";
         jdbcTemplateObject.update(SQL, author, title, isn);
     }
 }

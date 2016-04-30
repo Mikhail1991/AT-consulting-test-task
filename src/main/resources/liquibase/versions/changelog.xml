@@ -1,0 +1,103 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="user_table" author="mike">
+        <createTable tableName="user_">
+            <column name="id" autoIncrement="true" type="int">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="book">
+            <column name="id" autoIncrement="true" type="int">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="isn" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="owner" type="varchar(128)">
+            </column>
+            <column name="title" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <insert tableName="user_">
+            <column name="id">1</column>
+            <column name="name">us</column>
+            <column name="password">12345</column>
+        </insert>
+        <insert tableName="user_">
+            <column name="id">2</column>
+            <column name="name">admin</column>
+            <column name="password">qwerty</column>
+        </insert>
+
+        <insert tableName="book">
+            <column name="id">1</column>
+            <column name="isn">137-364</column>
+            <column name="author">David Baldacci</column>
+            <column name="owner"></column>
+            <column name="title">Freddy and the French Fries</column>
+        </insert>
+
+        <insert tableName="book">
+            <column name="id">2</column>
+            <column name="isn">835-275</column>
+            <column name="author">Judith Krantz</column>
+            <column name="owner"></column>
+            <column name="title">Scruples Two</column>
+        </insert>
+
+        <insert tableName="book">
+            <column name="id">3</column>
+            <column name="isn">923-265</column>
+            <column name="author">Cao Xueqin</column>
+            <column name="owner">us</column>
+            <column name="title">Dream of the Red Chamber</column>
+        </insert>
+
+        <insert tableName="book">
+            <column name="id">4</column>
+            <column name="isn">023-465</column>
+            <column name="author">Denise Robins</column>
+            <column name="owner">admin</column>
+            <column name="title">Love s Broken Idol</column>
+        </insert>
+
+        <insert tableName="book">
+            <column name="id">5</column>
+            <column name="isn">473-945</column>
+            <column name="author">Anne Rice</column>
+            <column name="owner">admin</column>
+            <column name="title">Blood and Gold</column>
+        </insert>
+
+        <insert tableName="book">
+            <column name="id">6</column>
+            <column name="isn">934-576</column>
+            <column name="author">Rex Stout</column>
+            <column name="owner"></column>
+            <column name="title">The Second Confession</column>
+        </insert>
+
+        <insert tableName="book">
+            <column name="id">7</column>
+            <column name="isn">945-721</column>
+            <column name="author">Eleanor Hibbert</column>
+            <column name="owner"></column>
+            <column name="title">Daughter of Anna</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

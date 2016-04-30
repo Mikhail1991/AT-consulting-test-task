@@ -25,7 +25,7 @@ public class UserJdbcTemplate implements UserDao {
 
     @Override
     public User getUserById(Integer id) {
-        String SQL = "select * from USER where id = ?";
+        String SQL = "select * from user_ where id = ?";
         User user = jdbcTemplateObject.queryForObject(SQL,
                 new Object[]{id}, new UserMapper());
         return user;
@@ -35,7 +35,7 @@ public class UserJdbcTemplate implements UserDao {
     public User getUserByLogin(String login){
         User user;
         try{
-            String SQL = "select * from USER where NAME = ?";
+            String SQL = "select * from user_ where NAME = ?";
             user = jdbcTemplateObject.queryForObject(SQL,
                     new Object[]{login}, new UserMapper());
         }catch(EmptyResultDataAccessException ex){
@@ -46,7 +46,7 @@ public class UserJdbcTemplate implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
-        String sql = "select * from User ORDER BY NAME";
+        String sql = "select * from user_ ORDER BY NAME";
         List <User> allUsers = jdbcTemplateObject.query(sql,
                 new UserMapper());
         return  allUsers;
@@ -54,20 +54,19 @@ public class UserJdbcTemplate implements UserDao {
 
     @Override
     public void addUser(String login, String password) {
-        String SQL = "insert into User (NAME, PASSWORD) values (?, ?)";
+        String SQL = "insert into user_ (NAME, PASSWORD) values (?, ?)";
         jdbcTemplateObject.update( SQL, login, password);
     }
 
     @Override
     public void deleteUser(Integer id){
-        String SQL = "delete from User where id = ?";
+        String SQL = "delete from user_ where id = ?";
         jdbcTemplateObject.update(SQL, id);
     }
 
     @Override
     public void changeUserData(String login, String password){
-        String SQL = "update USER set PASSWORD = ? where NAME = ?";
+        String SQL = "update user_ set PASSWORD = ? where NAME = ?";
         jdbcTemplateObject.update(SQL, password, login);
     }
-
 }

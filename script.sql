@@ -19,6 +19,6 @@ insert into BOOK (ISN,AUTHOR,OWNER,TITLE) VALUES ('023-465','Denise Robins','adm
 insert into BOOK (ISN,AUTHOR,OWNER,TITLE) VALUES ('473-945','Anne Rice','admin','Blood and Gold');
 insert into BOOK (ISN,AUTHOR,OWNER,TITLE) VALUES ('934-576','Rex Stout', null,'The Second Confession');
 insert into BOOK (ISN,AUTHOR,OWNER,TITLE) VALUES ('945-721','Eleanor Hibbert', null,'Daughter of Anna');
-*
+
 insert into USER (NAME, PASSWORD) VALUES ('us','12345');
 insert into USER (NAME, PASSWORD) VALUES ('ad','qwerty');
