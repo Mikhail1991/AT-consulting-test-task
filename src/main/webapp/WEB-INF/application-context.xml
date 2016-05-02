@@ -25,5 +25,5 @@
 
        <import resource="spring-servlet.xml" />
        <import resource="spring-datasource.xml"/>
-       <import resource="security.xml"/>
+       <import resource="spring-security.xml"/>
 </beans>

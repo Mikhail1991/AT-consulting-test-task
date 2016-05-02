@@ -11,12 +11,12 @@ function loadUsers(){
                     users = null;
                     users = result;
                     var str = "<table id='userTable'> " + "<tr>" +
-                        "<th> name </th>" + "<th> surname </th>"  + "</tr>";
+                        "<th> Имя </th>" + "<th> Удалить </th>"  + "</tr>";
 
                     for (var i=0;i<result.length;++i){
                         str+="<tr>" +
                         "<td><div id='boxes'><a href='#dialogUserChange' onclick='showModal(this, event)'>"+ result[i].name + "</a></div></td>" +
-                        "<td><button onclick='deleteUser(this)'>Удалить польтзователя</button></td>"    +
+                        "<td><button class='btn-default' onclick='deleteUser(this)'>Удалить польтзователя</button></td>"    +
                         "</tr>";
                     }
                     str+="</table>";
